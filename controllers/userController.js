@@ -22,7 +22,7 @@ exports.register = async(req, res)=>{
                 email,
                 password,
                 profile:"",
-                // role:role || "user"
+                
             })
             await newUser.save()
             res.status(200).json(newUser)
