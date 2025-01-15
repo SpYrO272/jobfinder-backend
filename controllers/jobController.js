@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Job = require('../model/job'); // Assuming you have a Job model
+const Job = require('../model/job');
 
 // Post a new job
 router.post('/jobs', async (req, res) => {
@@ -16,7 +16,7 @@ router.post('/jobs', async (req, res) => {
     });
 
     await newJob.save();
-    console.log('Job saved:', newJob); // Log the saved job
+    console.log('Job saved:', newJob); 
     res.status(201).send('Job posted successfully');
   } catch (error) {
     console.error('Error posting job:', error);
@@ -24,11 +24,11 @@ router.post('/jobs', async (req, res) => {
   }
 });
 
-// In your jobController.js or server.js file
+
 router.get('/jobs', async (req, res) => {
     try {
-      const jobs = await Job.find(); // Fetch all jobs
-      res.json(jobs); // Send jobs to the frontend
+      const jobs = await Job.find(); 
+      res.json(jobs); 
     } catch (error) {
       console.error('Error fetching jobs:', error);
       res.status(500).send('Error fetching jobs');
@@ -38,17 +38,17 @@ router.get('/jobs', async (req, res) => {
   // Get job by ID
   router.get('/jobs/:id', async (req, res) => {
     try {
-      const jobId = req.params.id; // Extract the job ID from the URL
-      const job = await Job.findById(jobId); // Query the database by ID
+      const jobId = req.params.id; 
+      const job = await Job.findById(jobId); 
   
       if (!job) {
-        return res.status(404).send('Job not found'); // Handle case where the job doesn't exist
+        return res.status(404).send('Job not found'); 
       }
   
-      res.json(job); // Send the job data as JSON
+      res.json(job); 
     } catch (error) {
       console.error('Error fetching job:', error);
-      res.status(500).send('Error fetching job'); // Handle server errors
+      res.status(500).send('Error fetching job'); 
     }
   });
   

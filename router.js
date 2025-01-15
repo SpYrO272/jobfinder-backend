@@ -33,7 +33,7 @@ router.get('/all-formdata',applicationController.getAllApplicationController)
 router.get('/jobs', async (req, res) => {
     try {
       const jobs = await job.find();
-      res.status(200).json(jobs); // Respond with the list of jobs
+      res.status(200).json(jobs); 
     } catch (error) {
       console.error('Error fetching jobs:', error);
       res.status(500).json({ error: 'Failed to fetch jobs' });
@@ -46,7 +46,7 @@ router.get('/jobs', async (req, res) => {
     try {
       const Job = new job(req.body);
       const savedJob = await Job.save();
-      res.status(201).json(savedJob); // Respond with the saved job
+      res.status(201).json(savedJob); 
     } catch (error) {
       console.error('Error saving job:', error);
       res.status(500).json({ error: 'Failed to save job' });
