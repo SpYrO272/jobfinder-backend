@@ -9,7 +9,7 @@ exports.register = async(req, res)=>{
 
     console.log('inside register function');
     const {username, email, password,} = req.body
-    console.log(username, email,password);
+    console.log(username,email,password);
     
     try {
         const existingUser = await users.findOne({email})
@@ -22,7 +22,7 @@ exports.register = async(req, res)=>{
                 email,
                 password,
                 profile:"",
-                role:role || user
+                // role:role || "user"
             })
             await newUser.save()
             res.status(200).json(newUser)
